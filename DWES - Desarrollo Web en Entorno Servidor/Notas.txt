@@ -1,0 +1,11 @@
+PHP con el framework de Laravel
+
+
+PHP
+MySQL
+Laravel
+JQuery
+
+Apache (Servidor web)
+MySQL(S BD)
+XAMPP
