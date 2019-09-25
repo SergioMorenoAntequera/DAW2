@@ -1,0 +1,122 @@
+.blog__posts {
+  min-height: 845px;
+  font-family: 'PT Sans', sans-serif;
+}
+.blog__posts .container {
+  transition: .5s;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+/*.blog {
+    .blog__posts {
+        padding-top: 30px!important;
+    }
+}*/
+.blog__category {
+  margin-top: 50px;
+}
+.category__slider {
+  display: flex;
+}
+.category__archive-link {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.category__archive-link .btn {
+  font-size: 1rem;
+  width: 150px;
+  height: 40px;
+  color: #FFF;
+  background-color: #08b7c9;
+  font-family: 'PT Sans', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.category__archive-link .btn__arrow {
+  font-size: calc(1rem + 4px);
+}
+.category__archive-link .btn:hover {
+  background: #00a2b2;
+  transition: .5s;
+}
+.category__archive-link::before {
+  content: '';
+  width: 70%;
+  height: 1px;
+  display: block;
+  background-color: #ececec;
+  margin-right: 10%;
+}
+.category__posts {
+  padding: 25px 0;
+  overflow: hidden;
+}
+.category__title {
+  width: 100%;
+  display: block;
+}
+.category__title a {
+  font-size: 1.5rem;
+}
+.category__title .category__all,
+.category__title .category__right-arrow {
+  font-size: 1rem;
+  opacity: 0;
+}
+.category__title .category__all {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+@keyframes show_all {
+  from {
+    opacity: 0;
+    margin-left: 0;
+  }
+  to {
+    opacity: 1;
+    margin-left: 15px;
+  }
+}
+@keyframes show_right-arrow {
+  from {
+    opacity: 0;
+    margin-left: -100px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
+.category__title:hover .category__all {
+  opacity: 1;
+  animation: show_all 0.5s ease-out;
+}
+.category__title:hover .category__right-arrow {
+  animation: show_right-arrow 0.7s 0.1s ease-out;
+  animation-fill-mode: forwards;
+  /*                opacity: 1;*/
+}
+@media (max-width: 576px) {
+  .blog .blog__posts {
+    padding: 0;
+  }
+  .category__posts .category__slider {
+    display: block;
+  }
+  .container__archive {
+    flex-direction: column;
+  }
+  .blog__category {
+    width: 100%;
+    padding: 0 20px;
+  }
+  .category__archive-link {
+    padding-right: 20px;
+  }
+}
+/*# sourceMappingURL=ms__blog.css.map */

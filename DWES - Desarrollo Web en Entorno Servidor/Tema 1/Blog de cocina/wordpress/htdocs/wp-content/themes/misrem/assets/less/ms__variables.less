@@ -1,0 +1,24 @@
+@outside-margin: 45px;
+@font-style: 'PT Sans', sans-serif;
+@accent-color: #08b7c9;
+@grey-header: #868686;
+
+@header-transition: .7s;
+
+.generate-arrow(@font, @width, @height) {
+	font-size: @font;
+	width: @width;
+	height: @height;
+}
+
+.generate-btn(@font, @width, @height, @color, @bg-color) {
+	font-size: @font;
+	width: @width;
+	height: @height;
+	color: @color;
+	background-color: @bg-color;
+        font-family: @font-style;
+	&__arrow {
+		font-size: calc(@font + 4px);
+	}
+}
