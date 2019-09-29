@@ -13,6 +13,7 @@ function showScreenAvailableDimensions(){
 //Para saber información relacionada con la capacidad de nuestros píxeles de representar colores
 function showPixelInfo() {
     //Sabemos el numero de colores que puede representar nuestra pantalla
+    
     /* Bit Depth	Number of Colours
     1 bit	2 colours (usually black and white)
     2 bits	4 colours
@@ -22,29 +23,33 @@ function showPixelInfo() {
     16 bits	65, 536 colours (known as 'high' colour)
     24 bits	16.7 million colours (known as 'true' colour)
     32 bits	16.7million colours plus greyscale mask (alpha channel)*/
+
     console.log("Numero de colores que piede representar un pixel(en bits): " + screen.colorDepth);
+
     //La capacidad de los colores de pasar por intermedios antes de pasar a otro
     console.log("Numero de bits de resolucion de colores por pixel: " + screen.pixelDepth);
     //Estos dos valores suelen ir parejos
 }
 
-//Para saber la distancia de nuestra ventana al margen superior e izquierdo de la pantalla
+//Para saber la distancia de nuestra ventana al margen superEsior e izquierdo de la pantalla
 function showDistanceToTheScreenSides() {
     console.log("Distancia de la ventana a la parte superior de la pantalla: " + screenTop);
     console.log("Distancia de la ventana a la parte izquierda de la pantalla: " + screenLeft);
 }
 
-//Cosas relacionados con la orientación de la pantalla
+//Informacion relacionados con la orientación de la pantalla
 function showOrientationInfo(){
     //Primero conseguimos un objeto del tipo ScreenOrientation con el que trabajar
     var orientacion = screen.orientation;
     //Propiedades
-    console.log("Tipo de orientación: " + orientacion.type);
-    console.log("Angulo que indica la rotación: " + orientacion.angle);
+    console.log("Tipo de orientacion: " + orientacion.type);
+    console.log("Angulo que indica la rotacion: " + orientacion.angle);
 
     console.log("Esta clase tiene un EventHandler llamado onChange para que le llame cuando se rota la pantalla");
     
-    //Métodos que bloquean o desbloquean la rotacion de la página
+    //Métodos 
+    //Bloquean o desbloquean la rotacion de la página respectivamente
     orientacion.lock;
     orientacion.unlock;
 }
+
