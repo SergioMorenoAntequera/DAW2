@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title> ej05: Calcula dias entre fechas </title>
+    </head>
+    
+    <body>
+        <p>Dias entre las fechas: <div id=fac>  </div></p>
+
+        <script>
+            var date1 = prompt("Introduce una fecha ddmmaaaa");
+            var date2 = prompt("Introduce otra fecha ddmmaaaa");
+            var dias = 0;
+            
+            var d1 = parseInt(date1.substring(0, 2));
+            var m1 = parseInt(date1.substring(2, 4));
+            var y1 = parseInt(date1.substring(4, 8));
+
+            var d2 = parseInt(date2.substring(0, 2));
+            var m2 = parseInt(date2.substring(2, 4));
+            var y2 = parseInt(date2.substring(4, 8));
+
+            var auxY = 0;
+            if(y2 > y1){
+                auxY = Math.abs(y2 - y1);
+                auxY *= 365;
+            }
+
+            var auxM = Math.abs(m2 - m1);
+            auxM *= 31;
+
+            var auxD = Math.abs(d2 - d1);
+
+            document.getElementById("fac").textContent = auxY + auxM + auxD;
+        
+        </script>
+    </body>
+</html>

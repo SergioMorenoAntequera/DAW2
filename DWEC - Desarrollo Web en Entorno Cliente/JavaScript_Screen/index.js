@@ -1,3 +1,4 @@
+showDistanceToTheScreenSides();
 
 //Para saber las dimensiones de nuestra pantalla en píxeles
 function showScreenDimensions() {
@@ -24,10 +25,10 @@ function showPixelInfo() {
     24 bits	16.7 million colours (known as 'true' colour)
     32 bits	16.7million colours plus greyscale mask (alpha channel)*/
 
-    console.log("Numero de colores que piede representar un pixel(en bits): " + screen.colorDepth);
+    console.log("Numero de bits necesarios para representar un color: " + screen.colorDepth);
 
     //La capacidad de los colores de pasar por intermedios antes de pasar a otro
-    console.log("Numero de bits de resolucion de colores por pixel: " + screen.pixelDepth);
+    console.log("Numero de bits empleados en el cambio del tono de color: " + screen.pixelDepth);
     //Estos dos valores suelen ir parejos
 }
 

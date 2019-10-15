@@ -115,6 +115,10 @@
         switch($do) {
             // LOGIN MENU //////////////////////////////////////////////////////////////////////////
             case "LoginMenu": {
+                if(isset($_SESSION['nick'])){
+                    echo("<script>location.href='actividad.php?do=UserMenu'</script>");
+                }
+
                 echo("<br>");
                 echo("<h3>Bienvenid@, entra en tu cuenta o regístrate para empezar</h3>");
 
@@ -123,8 +127,21 @@
                 }
 
                 //Comprobamos si venimos de borrar un usuario
+                // nqb -> nick que borrar
                 if(isset($_REQUEST['nqb'])){
-                    echo("<b> Usuario ".$_REQUEST['nqb']." borrado con exito <br></b>");
+                    echo("<b> Usuario ".$_REQUEST['nqb']." borrado con exito <br><br></b>");
+                    session_destroy();
+                }
+
+                // Cuando llegamos de LoginCheck y ha habido algun problema
+                // bflc -> Back from loginCheck
+                if(isset($_REQUEST['bflc'])){
+                    if($_REQUEST['bflc'] == "pass"){
+                        echo("<br><p>Contraseña incorrecta</p><br>");
+                    }
+                    if($_REQUEST['bflc'] == "user"){
+                        echo("<br><p>Usuario no encontrado</p><br>");
+                    }
                 }
 
                 ?>
@@ -153,20 +170,15 @@
 
             // LOGIN CHECK ///////////////////////////////////////////////////////////////////////////////////
             case "LoginCheck": {
-                //Requisitos el nick y la contraseña en REQUEST
+                if(isset($_REQUEST['nick']) && isset($_REQUEST['password'])){
+                    //Requisitos el nick y la contraseña en REQUEST
                 $result = $conn->query ("SELECT * FROM usuarios WHERE nick = \"".$_REQUEST['nick']."\"");
                 while($registro = $result->fetch_object()){
                     //Comprobamos si la contraseña es correcta
                     //Si NO ES correcta acaba el programa
                     if($registro->passwd != $_REQUEST["password"]){
-                        echo("<br><br><br><p>Contraseña incorrecta</p><br><br>");
-                        echo("<form action=actividad.php method=GET>
-                            <p><input type=hidden name=do value=LoginMenu> </p>
-                            <div class='wrapper'>
-                            <input type=submit value=Retroceder>
-                            </div>
-                            </form>");
-                        exit();
+                        //bflc -> back from logincheck // pass
+                        echo ("<script>location.href='actividad.php?do=LoginMenu&bflc=pass'</script>");
                     }
 
                     //Si ES correcta selecciona el tipo de usuario y entra
@@ -178,17 +190,18 @@
                     }
 
                     //Nos manda al panel del usuario
-                    header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu");
+                    echo("<script>location.href='actividad.php?do=UserMenu'</script>");
+                    //header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu");
                 }
 
                 //Si llegamos aqui es que no hemos encontrado el usuario
-                echo("<br><br><p>Usuario no encontrado</p><br><br>");
-                echo("<form>
-                    <p> <input type=hidden value=LoginMenu name=do > </p>
-                    <p> <input type=submit value=Retroceder> </p>
-                    </form>");
-                exit();
+                //bflc -> back from logincheck // user
+                echo ("<script>location.href='actividad.php?do=LoginMenu&bflc=user'</script>");
 
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
+                }
+                
                 break;
             }
 
@@ -210,7 +223,16 @@
                 <p><input type=text required=required name=rEmail placeholder=Email size=40> </p>
                 <p><input type=text required=required name=rNick placeholder=Nick size=40> </p>
                 <p><input type=text required=required name=rPassword placeholder=Contraseña size=40> </p>
-                <p> Administrador: <input type=checkbox name=rAdmin value=1> </p><br>
+                <?php
+                //Ponemos esto aqui para solo poder hacer admins desde admin
+                //cda -> Creando desde admin
+                if(isset($_REQUEST['cda'])){
+                    echo("<p> Administrador: <input type=checkbox name=rAdmin value=1> </p><br>");
+                } else {
+                    echo("<br>");
+                }
+                ?>
+                
                 
                 <?php
 
@@ -259,23 +281,29 @@
                         //Comprobamos si estamos logueados lo que significa
                         //que estamos creando el usuario desde un admin y no cambiamos la sesion
                         if(isset($_SESSION['nick'])){
-                            header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu");
-                            break;
+                            echo("<script>location.href='actividad.php?do=UserMenu'</script>");
+                            //header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu");
+                            //break;
                         }
 
                         // Le damos valor a la variable de nick y contraseña
                         // y la mandamos a UserMenu para que se loguee solo
                         $rNick = $_REQUEST['rNick'];
                         $rPassword = $_REQUEST['rPassword'];
-                        header("Location: http://localhost/ejercicios3/actividad.php?do=LoginCheck&nick=$rNick&password=$rPassword");
+                        echo("<script>location.href='actividad.php?do=LoginCheck&nick=$rNick&password=$rPassword'</script>");
+                        //header("Location: http://localhost/ejercicios3/actividad.php?do=LoginCheck&nick=$rNick&password=$rPassword");
                     }
 
                     if($usuarioYaCreado){
                         //Mandamos una señal a la pagina de registro y la actualizamos
                         //uyc -> Usuario ya creado
-                        header("Location: http://localhost/ejercicios3/actividad.php?do=RegisterMenu&uyc=$rNick");
+                        echo("<script>location.href='actividad.php?do=RegisterMenu&uyc=$rNick'</script>");
+                        //header("Location: http://localhost/ejercicios3/actividad.php?do=RegisterMenu&uyc=$rNick");
                     }
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
+
                 break;
             }
             
@@ -337,6 +365,7 @@
                             <form>
                                 <!-- rda = Registro desde admin -->
                                 <p> <input type=hidden value=RegisterMenu name=do> </p>
+                                <p> <input type=hidden value=true name=cda> </p>
                                 <div class=wrapper>
                                     <input type=submit value=\"Crear nuevo usuario\">
                                 </div>
@@ -364,7 +393,7 @@
                                     <input type=hidden value='ModifyMenu' name ='do'>
                                     <input type=submit value='Modificar' style='width:100%'>
                                 </form> </td>
-                                <form> <td>
+                                <td> <form>
                                     <!-- nqb = Nick que borrar -->
                                     <input type=hidden value=$registro->nick name ='nqb'>
                                     <input type=hidden value='DeleteMenu' name ='do'>
@@ -375,15 +404,26 @@
                         echo("</table><br><br>");
                     }
 
+                    
+
                     //Salimos del usuario porque queremos que esto esté en los 2 usuarios
                     echo("<form>
-                        <p> <input type=hidden value=LoginMenu name=do > </p>
+                        <p> <input type=hidden value=DisconnectsCheck name=do > </p>
                         <div class=wrapper>
                         <input type=submit value=Desconectarse>
                         </div>
                         </form>");
 
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
+                break;
+            }
+
+            // DISCONNECTION CHECK //////////////////////////////////////////////////////////////////////////
+            case "DisconnectsCheck": {
+                session_destroy();
+                echo("<script>location.href='actividad.php?do=LoginMenu'</script>");
                 break;
             }
 
@@ -417,6 +457,8 @@
                     echo("<p><input type=hidden name=do value=UserMenu> </p>");
                     echo("<p><input type=submit value=Cancelar></p>");
                     echo("</form>");
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
                 break;
             }
@@ -461,8 +503,11 @@
                             $_SESSION['admin'] = $adminAux;
                         }
                         //Nos dirigimos al menu de usuario
-                        header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu");
+                        echo("<script>location.href='actividad.php?do=UserMenu'</script>");
+                        //header("Location: http://localhost/ejercicios3/actividad.php");
                     }
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
                 break;
             }
@@ -485,7 +530,7 @@
                             <input type=submit value='Eliminar'> 
                         </form>");
                 } else {
-                    echo "Error de acceso";
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
                 break;
             }
@@ -498,13 +543,14 @@
 
                     //Si hemos destruido un usuario propio nos manda al menú principal
                     if($_REQUEST['nqb'] == $_SESSION['nick']){
-                        session_destroy();
                         header("Location: http://localhost/ejercicios3/actividad.php?do=LoginMenu&nqb=".$_REQUEST['nqb']);
                         break;
                     } else {
                         header("Location: http://localhost/ejercicios3/actividad.php?do=UserMenu&nqb=".$_REQUEST['nqb']);
                         break;
                     }
+                } else {
+                    echo("<script>location.href='actividad.php?do=NoPermissionError'</script>");
                 }
             }
            
@@ -523,14 +569,24 @@
                 break;
             }
 
+            case "NoPermissionError":{
+                echo("<br><br><h3> Quieto vaquero, no tienes acceso a esta página. </h3>
+                    <p> Inicia sesión y ya hablamos <br><br></p>
+                    <form>
+                    <input type=hidden value='LoginMenu' name ='do'>
+                    <input type=submit value='Vale, lo siento'> 
+                    </form>");
+                break;
+            }
+
             // PAGE NOT FOUND //////////////////////////////////////////////////////////////////////////
             default: {
                 echo("<br>");
                 //This will appear whenever the user opens a page that it's not done
                 echo ("<h2> Hola pequeño 404 ¿Te has perdido? </h2>
                     <form>
-                        <input type=\"hidden\" value=\"LoginMenu\" name=\"do\" >
-                        <p> <input type=\"submit\" value=\"Volver\"> </p>
+                    <input type=\"hidden\" value=\"LoginMenu\" name=\"do\" >
+                    <p> <input type=\"submit\" value=\"Volver\"> </p>
                     </form>");
                 
                 break;
