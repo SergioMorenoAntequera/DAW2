@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio 08</title>
+</head>
+<body>
+    <script>
+        var alumnos = new Array();
+        alumnos[0] = new Array("Moreno-Sergio", "Calle Granada", 665632415, 19);
+        alumnos[1] = new Array("Perez-Juan", "Calle Santa", 639845212, 24);
+        alumnos[2] = new Array("Garcia-Cristina", "Calle Avenida", 698231472, 18);
+        alumnos[3] = new Array("Sanchez-Pedro", "Calle Lopan", 612347859, 23);
+        
+        //Nombre
+
+        //Direccion
+
+        //Número de teléfono
+        var aux = new Array();
+        for(var i = 0; i < alumnos.length; i++){
+            aux.push(alumnos[i][2]);
+        }
+
+        aux = bubbleSort(aux);
+        console.log(alumnos[0]);
+        /*
+        for(var i = 0; i<aux.length; i++){
+            for(var j = 0; j<alumnos.length; i++){
+                if(alumnos[j][2] == aux[i]){
+                    //console.log(alumnos[i]);
+                }
+            }
+        }
+*/alumnos
+        function bubbleSort(arr) {
+                const l = arr.length;
+                for (let i = 0; i < l; i++ ) {
+                    for (let j = 0; j < l - 1 - i; j++ ) {
+                        if ( arr[ j ] > arr[ j + 1 ] ) {
+                            [ arr[ j ], arr[ j + 1 ] ] = [ arr[ j + 1 ], arr[ j ] ];
+                        }
+                    }
+                }
+
+                return arr;
+            };
+    </script>
+</body>
+</html>

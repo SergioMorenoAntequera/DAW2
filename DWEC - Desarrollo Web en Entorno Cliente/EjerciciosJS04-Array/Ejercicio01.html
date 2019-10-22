@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio01</title>
+</head>
+<body>
+    <p id="array1"></p>
+    <p id="array2"></p>
+    <p id="array3"></p>
+    
+
+    <script>
+        var arr1 = [];
+        var arr2 = [];
+        var arr3 = [];
+        
+        for(var i = 0; i < 10; i++){
+            arr1.push(parseInt(Math.random() * (10 - 1) + 1));
+            arr2.push(parseInt(Math.random() * (10 - 1) + 1));
+        }
+
+        for(var i = 0; i < arr1.length; i++){
+            arr3.push(arr1[i]);
+            arr3.push(arr2[i]);
+        }
+
+        document.getElementById("array1").innerHTML = arr1.toString();
+        document.getElementById("array2").innerHTML = arr2.toString();
+        document.getElementById("array3").innerHTML = arr3.toString();
+
+    </script>
+</body>
+</html>

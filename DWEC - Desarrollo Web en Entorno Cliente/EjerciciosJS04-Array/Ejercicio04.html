@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio04</title>
+</head>
+<body>
+    <p id="array1"></p>
+    <p id="array2"></p>
+    <p id="array3"></p>
+    
+
+    <script>
+        var arr1 = ["a", "h", "j", "o", "t", "x", "y"];
+        var arr2 = ["b", "g", "u", "v", "w", "x"];
+        var arr3 = [];
+        /*for(var i = 0; i < 10; i++){
+            arr1.push(parseInt(Math.random() * (100 - 1) + 1));
+        }
+        for(var i = 0; i < 5; i++){
+            arr2.push(parseInt(Math.random() * (100 - 1) + 1));
+        }
+        // Ordenamos los array que nos llegan
+        arr1 = ordenarBurbuja(arr1);
+        arr2 = ordenarBurbuja(arr2);
+        */
+
+        var letras = "abcdefghijklmnñopqrtsuvwxyz";
+        var index1 = arr1.length - 1, index2 = arr2.length - 1;
+        for(var i = 0; i < arr1.length + arr2.length; i++){
+            if(arr3.length <= arr1.length + arr2.length - 1){
+                if(index1 == -1){
+                    arr3.push(arr2[index2--])
+                } else if(index2 == -1){
+                    arr3.push(arr1[index1--])
+                } else if(letras.search(arr1[index1]) > letras.search(arr2[index2])){
+                    arr3.push(arr1[index1]);
+                    index1--;
+                } else if(letras.search(arr1[index1]) < letras.search(arr2[index2])){
+                    arr3.push(arr2[index2]);
+                    index2--;
+                } else if(letras.search(arr1[index1]) == letras.search(arr2[index2])){
+                    arr3.push(arr1[index1]);
+                    arr3.push(arr2[index2]);
+                    index1--;
+                    index2--;
+                }
+            }
+        }
+
+        /*var maxLength;
+        if(arr1.length > arr2.length){
+            maxLength = arr1.length;
+        } else {
+            maxLength = arr2.length;
+        }
+        var auxLength = maxLength-1;
+        for(var i = 0; i < maxLength; i++){
+            var j = auxLength--;
+            if(j < arr1.length && j < arr2.length){
+                if(arr1[j] >= arr2[j]){
+                    arr3.push(arr1[j]);
+                }
+                if(arr2[j] >= arr1[j]){
+                    arr3.push(arr2[j]);
+                }
+
+            } else if(j >= arr1.length){
+                arr3.push(arr2[j]);
+            } else if(j >= arr2.length){
+                arr3.push(arr1[j]);
+            }
+        }*/
+        console.log(arr3.length);
+        document.getElementById("array1").innerHTML = arr1.toString();
+        document.getElementById("array2").innerHTML = arr2.toString();
+        document.getElementById("array3").innerHTML = arr3.toString();
+
+        
+        function ordenarBurbuja(auxArr){
+            var size = auxArr.length;
+            for( var pass = 1; pass < size; pass++ ){
+                for( var left = 0; left < (size - pass); left++){
+                    var right = left + 1;
+                    if( auxArr[left] > auxArr[right] ){
+                        var auxVar = auxArr[left];
+                        auxArr[left] = auxArr[right];
+                        auxArr[right] = auxVar;
+                    }
+                }
+            }
+            return auxArr;
+        }
+
+    </script>
+</body>
+</html>

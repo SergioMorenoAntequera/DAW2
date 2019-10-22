@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio 07</title>
+</head>
+<body>
+    <p id="array1"></p>
+
+    <script>
+    var q = "Introduzca un numero para la matriz 1";
+    var arr = new Array(2);
+    arr[0] = new Array(prompt(q), prompt(q), prompt(q));
+    arr[0] = ordenarBurbuja(arr[0]);
+    var q = "Introduzca un numero para la matriz 2";
+    arr[1] = new Array(prompt(q), prompt(q), prompt(q));
+
+    var x = 0;
+    for(var y = 0; y < arr[x].length; y++){
+        document.write(arr[x][y] + " + " + arr[x+1][y] + " = " + (arr[x][y]+arr[x+1][y]) + "<br>");
+    }
+    
+    function ordenarBurbuja(auxArr){
+        var size = auxArr.length;
+        for( var i = 1; i < size; i++ ){
+            for( var j = 0; j < (size - i); j++){
+                var k = j + 1;
+                if(auxArr[j] > auxArr[k]){
+                    var auxVar = auxArr[j];
+                    auxArr[j] = auxArr[k];
+                    auxArr[k] = auxVar;
+                }
+            }
+        }
+        return auxArr;
+    }
+    </script>
+</body>
+</html>

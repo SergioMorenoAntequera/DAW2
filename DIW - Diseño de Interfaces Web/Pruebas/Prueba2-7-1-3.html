@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <h1>No define posicion</h1>
+
+    <div style="background-color: #606; color: #ffc; padding: 10px; text-align: center; width: 300px;">
+        No define posicion por lo que es static
+    </div>
+
+    <div style="position: absolute; width: 300px; padding: 10px; background-color: #066; text-align: right; color: #ffc; top: 100px; left: 300px;">
+        Capa absoluta(solo tiene como contenedor body) por lo tanto es relativa a body 
+    </div>
+
+    <div style="position: relative; width: 300px; padding: 10px; background-color: #033; color: #ffc; top: 0px; left: 30px;">
+        Capa de posicionamiento relativa, Secoloca segun la posicion que le tocaria en el flujo HTML
+    </div>
+
+    <div style="position: static; width: 300px; padding: 10px; background-color: #096; color: #ffc; top:10px; left:30px;">
+        Capa fija, se coloca como una absoluta
+    </div>
+
+    <div style="position: absolute; width: 350px; height: 100px; padding: 10px; background-color: #666; text-align: right; color: #ffc; top:300px; left:500px;">
+        <div style="position: absolute; width:300px; padding:10px; background-color:#111; text-align:right; color:#ffc; top:0px; left:5px;">
+            Capa absoluta, se refrencia segun a su contenedor porque no es un static
+        </div>
+    </div>
+
+    <H2>La ultima en ponerse</H2>
+</body>
+</html>

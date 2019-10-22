@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ejercicio05</title>
+</head>
+<body>
+    <p id="array1"></p>
+    <p id="array2"></p>
+    <p id="array3"></p>
+    <p id="array4"></p>
+    
+
+    <script>
+        var arr1 = ["a", "h", "j", "o", "t", "x", "y"];
+        var arr2 = ["b", "g", "u", "v", "w", "x"];
+        var arr3 = ["c", "d", "e", "f", "k", "l", "q", "z"];
+        var arr4 = [];
+
+        var letras = "abcdefghijklmnñopqrtsuvwxyz";
+        arr4 = arr1.concat(arr2.concat(arr3));
+        arr4 = ordenarBurbuja(arr4);
+
+        document.getElementById("array1").innerHTML = arr1.toString();
+        document.getElementById("array2").innerHTML = arr2.toString();
+        document.getElementById("array3").innerHTML = arr3.toString();
+        document.getElementById("array4").innerHTML = arr4.toString();
+
+        
+        function ordenarBurbuja(auxArr){
+            var size = auxArr.length;
+            for( var i = 1; i < size; i++ ){
+                for( var j = 0; j < (size - i); j++){
+                    var k = j + 1;
+                    if(letras.search(auxArr[j]) > letras.search(auxArr[k])){
+                        var auxVar = auxArr[j];
+                        auxArr[j] = auxArr[k];
+                        auxArr[k] = auxVar;
+                    }
+                }
+            }
+            return auxArr;
+        }
+
+    </script>
+</body>
+</html>
