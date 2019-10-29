@@ -1,0 +1,157 @@
+body {
+    color: white;
+    background-color: #1c2329;
+    text-align: center;
+    margin: 0;
+    font-family:Arial;
+}
+
+table {
+    color: white;
+    width:90%;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    padding-top: 10px;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    color: black;
+}
+
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table#t01 tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+table#t01 th {
+    background-color: black;
+    color: white;
+}
+
+img {
+    max-width:250px;
+    max-height:400px;
+    min-width:250px;
+    min-height:400px;
+}
+
+.header {
+    padding: 2px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    background: #FF5B5B;
+    color: white;
+    font-size: 24px;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+    background-color: #efefef;
+    color: grey;
+    text-align: left;
+}
+
+p { color: #adb7bd; font-family: 'Lucida Sans', Arial, sans-serif; font-size: 16px; line-height: 26px; margin: 0; }
+a { color: #fe921f; text-decoration: underline; }
+a:hover { color: #ffffff }
+
+input[type=text],[type=password]  {
+    width: 35%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 20px;
+    margin: 10px 10px 10px 10px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus, [type=password]:focus{
+    width: 40%;
+}
+
+#wrapper {
+    text-align: center;
+}
+
+input[type=submit] {
+    /*width: 15%;*/
+    width: 80%;
+    padding: 15px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: 2px solid #e7e7e7;
+    border-radius: 8px;
+}
+
+input[type=submit]:hover {
+    background-color: #5D5D5D;
+    border: 2px solid #5D5D5D;
+}
+
+/********************** THE PAGE WHERE THE INFO ABOUT THE FILM IS DISPLAYED *****************************/
+#moviePage:after {
+    display: block;
+    height: 0px;
+    clear: both;
+    float: none;
+}
+#moviePage div {
+    float: left;
+    word-break: break-all;
+}
+#moviePage {
+    padding-bottom: -30px;
+}
+#left {
+    text-align:left; 
+    margin-left: 2%;
+    width: 20%;
+    float:left;
+}
+#middle {
+    text-align:left; 
+    height: 418px;
+    width: 58%;
+}
+#middle h3 {
+    padding-top: 0px;
+    margin-top: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    
+}
+#right {
+    position:relative;
+    width: 20%;
+    height: 418px;
+    text-align: left;
+}

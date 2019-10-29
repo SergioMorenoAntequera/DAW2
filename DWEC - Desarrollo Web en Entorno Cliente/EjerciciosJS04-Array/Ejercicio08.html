@@ -3,47 +3,76 @@
 <head>
     <title>Ejercicio 08</title>
 </head>
+
 <body>
+    <p id="info">  </p>
+    <button onclick="nom()"> Ordenar por nombre </button>
+    <button onclick="dirr()"> Ordenar por direccion </button>
+    <button onclick="tef()"> Ordenar por telefono </button>
+    
     <script>
         var alumnos = new Array();
-        alumnos[0] = new Array("Moreno-Sergio", "Calle Granada", 665632415, 19);
-        alumnos[1] = new Array("Perez-Juan", "Calle Santa", 639845212, 24);
-        alumnos[2] = new Array("Garcia-Cristina", "Calle Avenida", 698231472, 18);
-        alumnos[3] = new Array("Sanchez-Pedro", "Calle Lopan", 612347859, 23);
-        
-        //Nombre
+        alumnos[0] = new Array(0, "Moreno-Sergio", "Calle Granada", 665632415, 19);
+        alumnos[1] = new Array(1, "Perez-Juan", "Calle Santa", 639845212, 24);
+        alumnos[2] = new Array(2, "Garcia-Pedro", "Calle Avenida", 698231472, 18);
+        alumnos[3] = new Array(3, "Garcia-Cristina", "Calle Lopan", 612347859, 23);
 
-        //Direccion
-
-        //Número de teléfono
-        var aux = new Array();
-        for(var i = 0; i < alumnos.length; i++){
-            aux.push(alumnos[i][2]);
-        }
-
-        aux = bubbleSort(aux);
-        console.log(alumnos[0]);
-        /*
-        for(var i = 0; i<aux.length; i++){
-            for(var j = 0; j<alumnos.length; i++){
-                if(alumnos[j][2] == aux[i]){
-                    //console.log(alumnos[i]);
-                }
+        // Nombre //////////////////////////////////////////////////////////////////
+        function nom() {
+            var nombres = new Array();
+            for (var i = 0; i < alumnos.length; i++) {
+                nombres.push(alumnos[i][1]);
             }
+            nombres.sort();
+            console.log(ordenarAlumnos(nombres, 1));
         }
-*/alumnos
+
+        // Direccion ////////////////////////////////////////////////////////////////
+        function dirr() {
+            var direcciones = new Array();
+            for (var i = 0; i < alumnos.length; i++) {
+                direcciones.push(alumnos[i][2]);
+            }
+            direcciones.sort();
+            console.log(ordenarAlumnos(direcciones, 2));
+        }
+
+        //Número de teléfono ////////////////////////////////////////////////////////
+        function tef(){
+            var telf = new Array();
+            for (var i = 0; i < alumnos.length; i++) {
+                telf.push(alumnos[i][3]);
+            }
+            telf = bubbleSort(telf);
+            console.log(ordenarAlumnos(telf, 3));
+        }
+
+        //Metodos extra ////////////////////////////////////////////////////////
         function bubbleSort(arr) {
-                const l = arr.length;
-                for (let i = 0; i < l; i++ ) {
-                    for (let j = 0; j < l - 1 - i; j++ ) {
-                        if ( arr[ j ] > arr[ j + 1 ] ) {
-                            [ arr[ j ], arr[ j + 1 ] ] = [ arr[ j + 1 ], arr[ j ] ];
-                        }
+            const l = arr.length;
+            for (let i = 0; i < l; i++) {
+                for (let j = 0; j < l - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
                     }
                 }
+            }
+            return arr;
+        };
 
-                return arr;
-            };
+        function  ordenarAlumnos(aux, index){
+            var alumnosOrdenados = new Array();
+            for(var i = 0; i < aux.length; i++){
+                for(var j = 0; j < alumnos.length; j++){
+                    if(aux[i] == alumnos[j][index]){
+                        alumnosOrdenados.push(alumnos[j]);
+                    }
+                }
+            }
+            return alumnosOrdenados;
+        }
+
     </script>
 </body>
+
 </html>

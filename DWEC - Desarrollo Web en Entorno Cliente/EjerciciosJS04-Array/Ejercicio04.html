@@ -13,16 +13,6 @@
         var arr1 = ["a", "h", "j", "o", "t", "x", "y"];
         var arr2 = ["b", "g", "u", "v", "w", "x"];
         var arr3 = [];
-        /*for(var i = 0; i < 10; i++){
-            arr1.push(parseInt(Math.random() * (100 - 1) + 1));
-        }
-        for(var i = 0; i < 5; i++){
-            arr2.push(parseInt(Math.random() * (100 - 1) + 1));
-        }
-        // Ordenamos los array que nos llegan
-        arr1 = ordenarBurbuja(arr1);
-        arr2 = ordenarBurbuja(arr2);
-        */
 
         var letras = "abcdefghijklmnñopqrtsuvwxyz";
         var index1 = arr1.length - 1, index2 = arr2.length - 1;
@@ -47,29 +37,6 @@
             }
         }
 
-        /*var maxLength;
-        if(arr1.length > arr2.length){
-            maxLength = arr1.length;
-        } else {
-            maxLength = arr2.length;
-        }
-        var auxLength = maxLength-1;
-        for(var i = 0; i < maxLength; i++){
-            var j = auxLength--;
-            if(j < arr1.length && j < arr2.length){
-                if(arr1[j] >= arr2[j]){
-                    arr3.push(arr1[j]);
-                }
-                if(arr2[j] >= arr1[j]){
-                    arr3.push(arr2[j]);
-                }
-
-            } else if(j >= arr1.length){
-                arr3.push(arr2[j]);
-            } else if(j >= arr2.length){
-                arr3.push(arr1[j]);
-            }
-        }*/
         console.log(arr3.length);
         document.getElementById("array1").innerHTML = arr1.toString();
         document.getElementById("array2").innerHTML = arr2.toString();
