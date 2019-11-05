@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(function() {
+        var funcionquemaneja = function(){
+            if($(this).css("color") != "rgb(255, 0, 0)")
+                $(this).css("color", "rgb(255, 0, 0)");
+            else
+                $(this).css("color", "rgb(0, 0, 255)");
+        };
+
+        var asd = function(){
+            alert("holi");
+        }
+
+        $("p").bind("click mouseenter mouseleave", funcionquemaneja);
+    
+        $("#desactivar-evento").bind("click", function(){
+            $(this).css("color", funcionquemaneja);
+        });
+    });
+    </script>
+    <style media="screen"> body{background: #666;} </style>
+</head>
+<body>
+    <p>El texto cambia de calor al entrar o salir o al hacer click</p>
+    <input id="desactivar-evento" type="button" value="Quitar el cambio de color cuando se hace click"> 
+</body>
+</html>

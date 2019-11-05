@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p id="text1"> </p>
+    <p id="text2"> </p>
+
+
+    <script type="text/javascript">
+        document.getElementById("text1").innerHTML = $("p").css("color");
+        $("p").css("color", "red");
+        document.getElementById("text2").innerHTML = $("p").css("color");
+        
+    </script>
+</body>
+</html>
