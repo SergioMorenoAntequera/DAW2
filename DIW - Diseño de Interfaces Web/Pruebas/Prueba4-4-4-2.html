@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="jquery-1.6.4.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+    $(document).ready(function() {
+
+        $("div").click(function() {
+            $("div.antes").slideUp(300);
+            $("div.antes").fadeIn(300);
+            $("div.despues").slideUp(300);
+            $("div.despues").delay(800);
+            $("div.despues").fadeIn(800);
+        });
+    });
+    
+    </script>
+
+    <style>
+        div.antes{ background-color: #acc; }
+        div.despues{ background-color: rgb(42, 83, 124); }
+        
+    </style>
+
+    <h3>Pulsa cualquiera de los teexxtos</h3>
+    <div class="antes"> <p>Antes</p> </div>
+    <div class="despues"> <p>Despues</p> </div>
+    <div class="antes"> <p>Antes</p> </div>
+    <div class="despues"> <p>Despues</p> </div>
+
+</body>
+</html>

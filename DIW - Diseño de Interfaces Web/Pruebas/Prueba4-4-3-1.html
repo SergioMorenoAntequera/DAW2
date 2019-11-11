@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        $(document).ready(function() {
+            $(document.body).click(function() {
+                if($("div:first").is(":hidden")) {
+                    $("div").slideDown("slow");
+                } else {
+                    $("div").hide();
+                }
+            });
+        });
+    </script>
+
+    <style>
+    div {
+        background-color: lightgrey;
+        margin: 3px;
+        width: 80px;
+        height: 140px;
+        display: none;
+        float: left;
+    }
+    </style>
+
+    PULSA AQUI!
+
+    <div>Los efectos no son solo para divs y spans</div>
+    <div>Tambien son para cualquier elemento</div>
+    <div><button id="hidr">Botones también</button></div>
+    <div><p>Aunque no estén incluidos en un div</p></div>
+
+</body>
+</html>

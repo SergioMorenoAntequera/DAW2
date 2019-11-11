@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //HAcemos que al pasar sobre un span le podemos una clase que tiene un css que lo subraya
+        //Y cmo segundo parametro de hover lo quitamos para que lo quite
+        $(document).ready(function() {
+            $("span").hover(function() { 
+                $(this).addClass("hilite");},  function() {
+                $(this).removeClass("hilite"); });
+
+            $("span").click(function() {
+                $(this).fadeOut(1000, function() {
+                    $("div").text("'" + $(this).text() + "' se ha desvanecido!");
+                    $(this).remove();
+                }); // Function del Click
+            });
+
+            $("div").click(function() { 
+                $("span").fadeIn(); 
+            });
+        });
+    </script>
+    
+    <style media="screen">
+        span {
+            cursor: pointer;
+        }
+        span.hilite {
+            background-color: yellow;
+        }
+        div {
+            display:inline; color:red;
+        }
+    </style>
+
+    <h3> Encuentra los abjetivos <div></div></h3>
+    <p>La chaqueta <span>roja</span> es lo mejor cuand o hace un timepo <span>cálido</span></p>
+</body>
+</html>
+
