@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> ej02 </title>
+    </head>
+    
+    <body>
+        <p>Factorial: <div id=fac>  </div></p>
+
+        <button onclick="factorial()"> Introducir numero </button>
+
+        <script>
+
+            function factorial(){
+                var n = parseInt(prompt("Introduce un numero para sacar el factorial"));
+                var result = 1;
+
+                for (var i = 1; i <= n; i++) {
+                    result *= i;
+                    console.log(n);
+                    console.log(i);   
+                }
+                document.getElementById("fac").textContent = result;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="jquery-1.6.4.js"></script> 
+    <title>Document</title>
+
+    <style>
+        div{
+            overflow: scroll;
+            width: 300px;
+            height: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #888888;
+            padding: 7px, 3px, 0, 4px;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="prueba">
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+        Pulsa aqui y lazo el evento para que no haga scroll(desplazamiento) <br>
+    </div>
+    <br>
+    <span id="textoevento">
+        se hace scroll
+    </span>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <span id="repite">
+        Pulsa y lanzo el evento para que haga scroll
+    </span>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#prueba").scroll(function(){
+                $("#textoevento").css("display", "inline").fadeOut("slow");
+            });
+
+            $("#repite").click(function(){
+                
+                $("#prueba").scroll();
+            });
+            
+            $(window).resize(function(){
+                console.log($(window).width());
+                if($(window).width() > 600){
+                    $("div").css("background-color", "green;");
+                } else {
+                    $("div").css("background-color", "red;");
+                }
+            });
+        });
+
+    </script>
+    
+
+    
+</body>
+</html>

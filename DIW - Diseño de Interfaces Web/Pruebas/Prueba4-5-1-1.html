@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="jquery-1.6.4.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    
+    <style>
+    div.first{position: relative; background-color: #3f3; left: 0px; height: 400px; width: 400px;}
+    div.second{position: relative; background-color: #a3f; top: 100px; left: 100px; height: 200px; width: 200px;}
+    p {background-color: #33cc99;}
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            var cuenta_enter = 0;
+            var cuenta_over = 0;
+            $("div.first").mouseenter(function() {
+                $("p:first").text("con_mouseEnter " + cuenta_enter++);
+            });
+            $("div.first").mouseover(function() {
+                $("p:last").text("con_mouseOver " + cuenta_over++);
+            });
+        });
+    </script>
+
+    <div class="first">
+        <div class="second">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+
+</body>
+</html>

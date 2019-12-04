@@ -1,0 +1,6 @@
+1.- introducir N numeros y calcular media, valor mayor y valor menor (sin array)
+2.- Factorial de un numero
+3.- Introducir un numero y deir si este es o no primo.
+4.- Dado un nuero de años mmeses y dias decir cuantos dias son.
+5.- Dadas dos fechas de ddmmaaaa calcula el numero de dias entre ambos 
+6.- Dados dos numeros calcula el mcm y el mcd
